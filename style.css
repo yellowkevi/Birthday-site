@@ -1,0 +1,402 @@
+:root {
+  --green-deep:  #2D5A1D;   /* gate, 01 opening, 03 us-still */
+  --green-mid:   #426535;   /* 02 us */
+  --plum:        #4F1A40;   /* 04 the song */
+
+  --cream:       #D7E2B8;   /* headline text, note card bg (02) */
+  --rose:        #B9818A;   /* "my love", ring hover fill, ribbon */
+  --sage-ring:   #83A775;   /* ring stroke, photo frame border */
+
+  --note-bg-02:   #D7E2B8;
+  --note-text-02: #582E4E;
+  --note-bg-03:   #B0CCA6;
+  --note-text-03: #4F1A40;
+
+  --serif: 'Fraunces', Georgia, serif;
+  --sans:  'Karla', system-ui, -apple-system, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+[hidden] { display: none !important; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  min-height: 100%;
+  color: var(--cream);
+  font-family: var(--sans);
+  font-weight: 300;
+  line-height: 1.7;
+  background: var(--green-deep);
+}
+
+.wrap {
+  width: 100%;
+  max-width: 34rem;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.wrap--wide { max-width: 56rem; }
+
+.scene { position: relative; }
+
+.scene::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: .1;
+  background-size: cover;
+  background-position: center;
+  mix-blend-mode: soft-light;
+  pointer-events: none;
+}
+
+.gate::before,
+.scene--opening::before,
+.scene--us::before,
+.scene--us-still::before {
+  background-image: url("images/texture-sage.jpg");
+}
+
+.scene--song::before {
+  background-image: url("images/texture-burgundy.jpg");
+}
+
+.scene {
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  padding: clamp(3rem, 9vw, 6rem) 1.25rem;
+}
+
+.scene--opening { background: var(--green-deep); }
+.scene--us       { background: var(--green-mid); }
+.scene--us-still { background: var(--green-deep); }
+.scene--song     { background: var(--plum); }
+
+.gate-body { background: var(--green-deep); }
+
+.gate {
+  position: relative;
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  padding: 1.5rem;
+}
+
+.gate::before { opacity: .1; }
+
+.eyebrow {
+  font-family: var(--sans);
+  font-size: .9rem;
+  letter-spacing: .3em;
+  text-transform: lowercase;
+  color: rgba(215, 226, 184, .75);
+  margin: 0 0 1rem;
+}
+
+.gate__line {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(1.5rem, 5.5vw, 1.9rem);
+  line-height: 1.4;
+  color: var(--cream);
+  margin: 0 0 3rem;
+}
+
+.ring-btn {
+  --size: 7.5rem;
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  border: 1px solid var(--sage-ring);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .3rem;
+  margin: 0 auto;
+  color: var(--cream);
+  font-family: var(--sans);
+  font-size: 1rem;
+  text-decoration: none;
+  transition: background-color .35s ease, border-color .35s ease, transform .2s ease;
+  animation: breathe 4.5s ease-in-out infinite;
+}
+
+.ring-btn:hover,
+.ring-btn:focus-visible {
+  background: rgba(185, 129, 138, .1);
+  border-color: var(--rose);
+}
+
+.ring-btn:active { transform: scale(.97); }
+
+.ring-btn:focus-visible {
+  outline: 2px solid var(--sage-ring);
+  outline-offset: 4px;
+}
+
+.ring-btn__arrow { transition: transform .3s ease; }
+.ring-btn:hover .ring-btn__arrow { transform: translateX(3px); }
+
+@keyframes breathe {
+  50% { box-shadow: 0 0 34px 0 rgba(131, 167, 117, .3); }
+}
+
+.scene--opening { position: relative; }
+
+.headline {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(2.4rem, 8vw, 4rem);
+  line-height: 1.15;
+  color: var(--cream);
+  margin: 0 0 .3em;
+  animation: fadeUp .9s ease .1s both;
+}
+
+.age { font-variant-numeric: oldstyle-nums; }
+
+.accent {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(1.4rem, 5vw, 1.75rem);
+  color: var(--rose);
+  margin: 0;
+  animation: fadeUp .9s ease .35s both;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+}
+
+.scroll-cue {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(1.5rem, 5vh, 3rem);
+  transform: translateX(-50%);
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .6rem;
+  color: rgba(215, 226, 184, .7);
+  font-family: var(--sans);
+  font-size: .8rem;
+  letter-spacing: .2em;
+  text-decoration: none;
+  text-transform: lowercase;
+}
+
+.scroll-cue__line {
+  width: 1px;
+  height: 2.6rem;
+  background: linear-gradient(rgba(215, 226, 184, 0), rgba(215, 226, 184, .6));
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin: 0 0 2.5rem;
+}
+
+.frame {
+  margin: 0;
+  border: 1px solid var(--sage-ring);
+  border-radius: 2px;
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .6s ease, transform .6s ease;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, .3);
+}
+
+.frame.is-visible { opacity: 1; transform: none; }
+
+.gallery .frame:nth-child(2) { transition-delay: .15s; }
+
+.frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Placeholder shown if a photo is missing */
+.frame--empty {
+  display: grid;
+  place-items: center;
+  background: rgba(215, 226, 184, .08);
+  border-style: dashed;
+}
+
+.frame--empty img { display: none; }
+
+.frame--empty::after {
+  content: attr(data-empty);
+  font-size: .85rem;
+  padding: 1rem;
+  text-align: center;
+  color: rgba(215, 226, 184, .8);
+}
+
+.note-card {
+  position: relative;
+  max-width: 34rem;
+  margin: 0 auto;
+  padding: 1.6rem 2rem;
+  border-radius: 3px;
+  font-family: var(--serif);
+  font-size: clamp(1.05rem, 3vw, 1.2rem);
+  line-height: 1.6;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, .25);
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .6s ease .3s, transform .6s ease .3s;
+}
+
+.note-card.is-visible { opacity: 1; transform: none; }
+
+.note-card--ribbon {
+  background: var(--note-bg-02);
+  color: var(--note-text-02);
+}
+
+.note-card--alt {
+  background: var(--note-bg-03);
+  color: var(--note-text-03);
+}
+
+/* the one small ribbon accent, section 02 only */
+.note-card--ribbon::before {
+  content: "";
+  position: absolute;
+  top: -.6rem;
+  left: 50%;
+  width: 1.4rem;
+  height: 1.6rem;
+  background: var(--rose);
+  transform: translateX(-50%) rotate(-3deg);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 78%, 0 100%);
+}
+
+@media (min-width: 700px) {
+  .gallery { grid-template-columns: 1fr 1fr; }
+}
+
+/* ============================================================
+   04. The song
+   ============================================================ */
+.disc {
+  position: relative;
+  width: 11rem;
+  height: 11rem;
+  margin: 0 auto 2rem;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+
+.disc__ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px solid rgba(215, 226, 184, .35);
+}
+
+.disc__vinyl {
+  width: 5.6rem;
+  height: 5.6rem;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(circle at 50% 50%, var(--plum) 0 22%, transparent 23%),
+    repeating-radial-gradient(circle, #582E4E 0 2px, #4a1836 2px 6px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, .45);
+  transition: transform .3s ease;
+}
+
+.disc.is-playing .disc__vinyl {
+  animation: spin 1.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.disc__icon {
+  width: 1.4rem;
+  height: 1.4rem;
+  fill: var(--cream);
+}
+
+.disc__icon--pause { display: none; }
+.disc.is-playing .disc__icon--play { display: none; }
+.disc.is-playing .disc__icon--pause { display: block; }
+
+.disc:hover .disc__ring { border-color: var(--rose); }
+
+.disc:focus-visible {
+  outline: 2px solid var(--sage-ring);
+  outline-offset: 6px;
+  border-radius: 50%;
+}
+
+.disc[disabled] { cursor: default; opacity: .5; }
+
+.tap-hint {
+  font-size: .85rem;
+  letter-spacing: .1em;
+  color: rgba(215, 226, 184, .65);
+  margin: 0 0 1.6rem;
+  text-transform: lowercase;
+}
+
+.song-title {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(1.8rem, 6vw, 2.4rem);
+  margin: 0 0 .3em;
+  color: var(--cream);
+}
+
+.song-artist {
+  font-family: var(--sans);
+  font-size: 1rem;
+  color: rgba(215, 226, 184, .7);
+  margin: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
+  .ring-btn,
+  .headline,
+  .accent,
+  .frame,
+  .note-card,
+  .disc__vinyl {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .frame,
+  .note-card {
+    opacity: 1;
+    transform: none;
+  }
+}

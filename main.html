@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Happy Birthday</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Karla:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<main>
+
+
+  <section class="scene scene--opening" id="opening">
+    <div class="wrap">
+      <h1 class="headline">
+        Happy
+        
+        <span class="age">18</span>th
+        Birthday
+      </h1>
+      <p class="accent">Gloriaaa!</p>
+    </div>
+
+    <a class="scroll-cue" href="#us">
+      <span class="scroll-cue__line" aria-hidden="true"></span>
+      scroll
+    </a>
+  </section>
+
+  <section class="scene scene--us" id="us">
+    <div class="wrap wrap--wide">
+
+      <div class="gallery">
+        <figure class="frame">
+          
+          <img src="images/photo-when-we-met.jpg" alt="The two of us, arms around each other, walking together" loading="lazy">
+        </figure>
+        <figure class="frame">
+          <img src="images/photo-that-summer.jpg" alt="Looking at Van Gogh's Starry Night together at the museum" loading="lazy">
+        </figure>
+      </div>
+
+      <p class="note-card note-card--ribbon">
+  
+        When we met, and that summer we couldn't stop finding reasons to be together.
+      </p>
+
+    </div>
+  </section>
+
+
+  <section class="scene scene--us-still" id="us-still">
+    <div class="wrap wrap--wide">
+
+      <div class="gallery">
+        <figure class="frame">
+          <img src="images/photo-moment.jpg" alt="A quiet moment by the restaurant window" loading="lazy">
+        </figure>
+        <figure class="frame">
+          <img src="images/photo-recently.jpg" alt="You, recently" loading="lazy">
+        </figure>
+      </div>
+
+      <p class="note-card note-card--alt">
+        
+        And this year — still you, still my favorite person to sit across from.
+      </p>
+
+    </div>
+  </section>
+
+  <section class="scene scene--song" id="song">
+    <div class="wrap">
+
+     
+      <audio id="song-audio" src="audio/Que nadien sepa By Cardenales De Nuevo Leon.mp3" loop preload="none"></audio>
+
+      <button class="disc" id="disc-btn" aria-pressed="false" aria-label="Play Que nadie sepa by Cardenales de Nuevo León">
+        <span class="disc__ring" aria-hidden="true"></span>
+        <span class="disc__vinyl" aria-hidden="true">
+          <svg class="disc__icon disc__icon--play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+          <svg class="disc__icon disc__icon--pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+        </span>
+      </button>
+
+      <p class="tap-hint" id="tap-hint">tap the record</p>
+      
+      <h2 class="song-title">Que nadie sepa</h2>
+      <p class="song-artist">Cardenales de Nuevo León</p>
+
+    </div>
+  </section>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
